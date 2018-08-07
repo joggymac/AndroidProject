@@ -3,7 +3,19 @@
     package="example.angus.ben.dashcam01">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+=======
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
+    <uses-permission android:name="android.hardware.camera2.full"/>
+>>>>>>> b51a267bb5acdcbc2eff608c6dbc58769b6075b7
 
     <application
         android:allowBackup="true"
@@ -15,14 +27,17 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity
             android:name=".Speedometer"
             android:label="@string/title_activity_speedometer"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+=======
+
+>>>>>>> b51a267bb5acdcbc2eff608c6dbc58769b6075b7
     </application>
 
 </manifest>
