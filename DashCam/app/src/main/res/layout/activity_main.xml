@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<<<<<<< HEAD
-</android.support.constraint.ConstraintLayout>
-=======
+
+
+
 
     <TextureView
     android:id="@+id/textureView"
@@ -27,4 +27,3 @@
 
 </RelativeLayout>
 
->>>>>>> b51a267bb5acdcbc2eff608c6dbc58769b6075b7
