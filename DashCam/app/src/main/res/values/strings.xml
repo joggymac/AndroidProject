@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DashCam0.1</string>
+    <string name="title_activity_speedometer">Speedometer</string>
 </resources>
