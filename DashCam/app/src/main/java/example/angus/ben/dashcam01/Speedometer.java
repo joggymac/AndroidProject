@@ -3,6 +3,7 @@ package example.angus.ben.dashcam01;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -13,12 +14,32 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
 public class Speedometer extends AppCompatActivity  implements LocationListener{
     String unit;
     LocationManager listenmanger;
+    float x1, y1, x2, y2;
+    public boolean onTouchEvent(MotionEvent event){
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                x1 = event.getX();
+                y1 = event.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2 = event.getX();
+                y2 = event.getY();
+                if(x1 < x2){
+                    Intent i = new Intent(Speedometer.this, MainActivity.class);
+                    startActivity(i);
+                }
+                break;
+        }
+        return false;
+    }
+
 
     @SuppressLint("MissingPermission")
     @Override

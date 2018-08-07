@@ -7,23 +7,30 @@
     tools:context=".MainActivity">
 
 
-
-
-
     <TextureView
-    android:id="@+id/textureView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_above="@+id/btnCapture"
+        android:id="@+id/textureView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnCapture"
 
-    />
+        />
+
+    <TextView
+        android:id="@+id/Speedtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="?attr/colorControlHighlight"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="124dp"
+        tools:layout_editor_absoluteY="272dp" />
 
     <Button
         android:id="@+id/btnCapture"
-        android:text="CAPTURE"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="CAPTURE" />
 
 </RelativeLayout>
 
