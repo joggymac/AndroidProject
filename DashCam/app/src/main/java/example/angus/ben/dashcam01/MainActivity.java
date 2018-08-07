@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
-<<<<<<< HEAD
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -12,7 +11,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
-=======
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
 import android.media.Image;
@@ -51,8 +49,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
->>>>>>> b51a267bb5acdcbc2eff608c6dbc58769b6075b7
-
 
 public class MainActivity extends AppCompatActivity{
     //
@@ -120,21 +116,20 @@ public class MainActivity extends AppCompatActivity{
                 takePicture();
             }
         });
+
        /* ActivityCompat.requestPermissions(MainActivity.this,
                 new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                 1);
         ActivityCompat.requestPermissions(MainActivity.this,
                 new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
                 1);
-
-<<<<<<< HEAD
+        */
 
     }
 
     //
 }
-=======
-                */
+
     }
 
     private void takePicture() {
@@ -371,4 +366,3 @@ public class MainActivity extends AppCompatActivity{
         mBackgroundHandler = new Handler(mBackgroundThread.getLooper());
     }
 }
->>>>>>> b51a267bb5acdcbc2eff608c6dbc58769b6075b7
