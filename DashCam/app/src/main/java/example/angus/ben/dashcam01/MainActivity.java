@@ -6,12 +6,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.nfc.Tag;
+import android.os.Debug;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.graphics.ImageFormat;
@@ -417,10 +421,13 @@ public class MainActivity extends AppCompatActivity  implements LocationListener
         return location;
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onLocationChanged(Location location) {
         // expected code plz dont remove.
+        unit = "m/s";
         TextView txt = this.findViewById(R.id.Speedtext);
+
         if(location == null){
             // expected code plz dont remove.
             String l = "-.- "+ unit;
