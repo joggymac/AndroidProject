@@ -61,25 +61,25 @@ public class MainActivity extends AppCompatActivity  implements LocationListener
     //
     String unit;
     LocationManager listenmanger;
-    float x1, y1, x2, y2;
-
-    public boolean onTouchEvent(MotionEvent event){
-        switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                x1 = event.getX();
-                y1 = event.getY();
-                break;
-            case MotionEvent.ACTION_UP:
-                x2 = event.getX();
-                y2 = event.getY();
-                if(x1 < x2){
-                    Intent i = new Intent(MainActivity.this, Speedometer.class);
-                    startActivity(i);
-                }
-                break;
-        }
-        return false;
-    }
+//    float x1, y1, x2, y2;
+//
+//    public boolean onTouchEvent(MotionEvent event){
+//        switch (event.getAction()){
+//            case MotionEvent.ACTION_DOWN:
+//                x1 = event.getX();
+//                y1 = event.getY();
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                x2 = event.getX();
+//                y2 = event.getY();
+//                if(x1 < x2){
+//                    Intent i = new Intent(MainActivity.this, Speedometer.class);
+//                    startActivity(i);
+//                }
+//                break;
+//        }
+//        return false;
+//    }
     //
 
     private Button btnCapture;
@@ -421,7 +421,6 @@ public class MainActivity extends AppCompatActivity  implements LocationListener
         return location;
     }
 
-    @SuppressLint("ResourceAsColor")
     @Override
     public void onLocationChanged(Location location) {
         // expected code plz dont remove.
