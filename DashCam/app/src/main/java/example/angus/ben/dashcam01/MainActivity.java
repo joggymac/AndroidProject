@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.nfc.Tag;
 import android.os.Debug;
 import android.support.v4.app.ActivityCompat;
@@ -45,7 +46,6 @@ import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -57,30 +57,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-public class MainActivity extends AppCompatActivity  implements LocationListener{
+public class MainActivity extends AppCompatActivity implements LocationListener{
     //
+    private static final String TAG = "MainActivity";
     String unit;
     LocationManager listenmanger;
-//    float x1, y1, x2, y2;
-//
-//    public boolean onTouchEvent(MotionEvent event){
-//        switch (event.getAction()){
-//            case MotionEvent.ACTION_DOWN:
-//                x1 = event.getX();
-//                y1 = event.getY();
-//                break;
-//            case MotionEvent.ACTION_UP:
-//                x2 = event.getX();
-//                y2 = event.getY();
-//                if(x1 < x2){
-//                    Intent i = new Intent(MainActivity.this, Speedometer.class);
-//                    startActivity(i);
-//                }
-//                break;
-//        }
-//        return false;
-//    }
-    //
 
     private Button btnCapture;
     private TextureView textureView;
@@ -147,7 +128,7 @@ public class MainActivity extends AppCompatActivity  implements LocationListener
         });
 
         LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,this);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0, (LocationListener) this);
 
         this.onLocationChanged(null);
 
@@ -393,16 +374,6 @@ public class MainActivity extends AppCompatActivity  implements LocationListener
     public LocationManager getLocationmanger() {
         listenmanger = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-
-            //
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding    String unit;
-            //    LocationManager listenmanger;
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return null;
 
         } else {
@@ -424,7 +395,8 @@ public class MainActivity extends AppCompatActivity  implements LocationListener
     @Override
     public void onLocationChanged(Location location) {
         // expected code plz dont remove.
-        unit = "m/s";
+        unit = "km/s";
+        //placeholder unit
         TextView txt = this.findViewById(R.id.Speedtext);
 
         if(location == null){
@@ -440,21 +412,36 @@ public class MainActivity extends AppCompatActivity  implements LocationListener
     }
 
     @Override
-
-    public void onStatusChanged(String s, int i, Bundle bundle) {
-        // needs more research
+    public void onStatusChanged(String s, int i, Bundle extras) {
+        //temp answer for now
+        switch (i) {
+            case LocationProvider.OUT_OF_SERVICE:
+                Log.v(TAG, "Status Changed: Out of Service");
+                Toast.makeText(this, "Status Changed: Out of Service",
+                        Toast.LENGTH_SHORT).show();
+                break;
+            case LocationProvider.TEMPORARILY_UNAVAILABLE:
+                Log.v(TAG, "Status Changed: Temporarily Unavailable");
+                Toast.makeText(this, "Status Changed: Temporarily Unavailable",
+                        Toast.LENGTH_SHORT).show();
+                break;
+            case LocationProvider.AVAILABLE:
+                Log.v(TAG, "Status Changed: Available");
+                Toast.makeText(this, "Status Changed: Available",
+                        Toast.LENGTH_SHORT).show();
+                break;
+            // needs more research
+        }
     }
-
     @Override
     public void onProviderEnabled(String s) {
         // needs more research
+        Log.d(TAG, s + " provider enabled");
     }
 
     @Override
     public void onProviderDisabled(String s) {
-        // needs more research
+        Log.d(TAG, s + " provider disabled");
     }
-
-
 }
 
